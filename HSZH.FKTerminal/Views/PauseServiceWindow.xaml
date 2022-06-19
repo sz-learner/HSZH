@@ -1,0 +1,55 @@
+﻿<Window x:Class="HSZH.FKTerminal.Views.PauseServiceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HSZH.FKTerminal.Views"
+        mc:Ignorable="d"
+        xmlns:ctrl="clr-namespace:HSZH.FKTerminal.Controls"
+        Title="PauseServiceWindow" Width="1920" Height="1080" Style="{DynamicResource DialogWindowStyle}">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/HSZH.FKTerminal;component/Themes/BasicDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="#060e20" Opacity="0.4"></SolidColorBrush>
+        </Grid.Background>
+        <Border CornerRadius="5" Width="800" Height="400">
+            <Border.Background>
+                <SolidColorBrush Color="White"></SolidColorBrush>
+            </Border.Background>
+            <Border.Effect>
+                <DropShadowEffect Opacity="0.3" ShadowDepth="1" BlurRadius="1" Color="Gainsboro"></DropShadowEffect>
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="120"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Background="#467dfb">
+                    <TextBlock VerticalAlignment="Center" Margin="20,0,0,0" FontSize="30" Foreground="White">请选择暂停服务原因</TextBlock>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button Style="{DynamicResource Button-Primary}" Width="200" Height="120" FontWeight="Bold" FontSize="36" Click="Button_Click">设备故障</Button>
+                        <Button Style="{DynamicResource Button-Primary}" Width="200" Height="120" FontWeight="Bold" FontSize="36" Click="Button_Click">暂停服务</Button>
+                        <Button Style="{DynamicResource Button-Primary}" Width="200" Height="120" FontWeight="Bold" FontSize="36" Click="Button_Click">网络故障</Button>
+                    </WrapPanel>
+                </Grid>
+                <Grid Grid.Row="2" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ctrl:IconButton Style="{DynamicResource IconButton-Info}" HorizontalAlignment="Left" Margin="20,0,0,0" Width="200" Height="75" x:Name="btnCancel"  Click="BtnCancel_Click"  FontSize="28" IconImageSize="36" FontWeight="Bold" IconImage="/HSZH.FKTerminal;component/Images/Icon/iconCanel.png">取消</ctrl:IconButton>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

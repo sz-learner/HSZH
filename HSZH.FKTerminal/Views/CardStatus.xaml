@@ -1,0 +1,53 @@
+﻿<Page x:Class="HSZH.FKTerminal.Views.CardStatus"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:vm="clr-namespace:HSZH.FKTerminal.ViewModels"
+      xmlns:ctrl="clr-namespace:HSZH.FKTerminal.Controls"
+      mc:Ignorable="d" 
+      d:DesignWidth="1920" d:DesignHeight="1080"
+      Title="CardStatus">
+
+    <Page.DataContext>
+        <vm:CardStatusViewModel />
+    </Page.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding DoInit}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="120"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="1" Margin="20,0,20,0" Background="White" CornerRadius="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Background="#6499F7">
+                    <TextBlock Text="设备状态" Style="{StaticResource TopTitleMessageStyle}" Foreground="White" FontSize="40" />
+                </Grid>
+                <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20,10,20,0">
+                    <TextBlock HorizontalAlignment="Center"  Margin="0,0,40,0" VerticalAlignment="Center" FontFamily="微软雅黑" FontWeight="Bold" FontSize="42" TextWrapping="Wrap" TextAlignment="Justify"  Text="{Binding MessageInfo}" Foreground="{DynamicResource color-text-primary}">
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="#FFD3CFCF" Opacity="0.5"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Grid>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="2" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ctrl:IconButton HorizontalAlignment="Left" Margin="20,0,0,0" Command="{Binding DoExit}" Style="{StaticResource IconButton-Canel}">退出</ctrl:IconButton>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6AB14D81-5F3E-4954-AD4C-0BEA91DB12DA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HSZH.FKTerminal</RootNamespace>
+    <AssemblyName>HSZH.FKTerminal</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FirstFloor.ModernUI, Version=1.0.9.0, Culture=neutral, PublicKeyToken=bc9b0c37bf06c6a9, processorArchitecture=MSIL">
+      <HintPath>..\packages\ModernUI.WPF.1.0.9\lib\net45\FirstFloor.ModernUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Common\AppRunType.cs" />
+    <Compile Include="Common\Gloval.cs" />
+    <Compile Include="Controls\IconButton.cs" />
+    <Compile Include="Controls\ImageButton.cs" />
+    <Compile Include="Controls\KeyBorder.xaml.cs">
+      <DependentUpon>KeyBorder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LoadingWait.xaml.cs">
+      <DependentUpon>LoadingWait.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AdminManagerViewModel.cs" />
+    <Compile Include="ViewModels\CardStatusViewModel.cs" />
+    <Compile Include="ViewModels\ExitPageViewModel.cs" />
+    <Compile Include="ViewModels\FaceCheckViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MessagePageViewModel.cs" />
+    <Compile Include="ViewModels\ObservableObject.cs" />
+    <Compile Include="ViewModels\ReadIDCardViewModel.cs" />
+    <Compile Include="Views\AdminManager.xaml.cs">
+      <DependentUpon>AdminManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BlankPage.xaml.cs">
+      <DependentUpon>BlankPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CardStatus.xaml.cs">
+      <DependentUpon>CardStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExitPage.xaml.cs">
+      <DependentUpon>ExitPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FaceCheck.xaml.cs">
+      <DependentUpon>FaceCheck.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MessagePage.xaml.cs">
+      <DependentUpon>MessagePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MessageWindow.xaml.cs">
+      <DependentUpon>MessageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PauseServiceWindow.xaml.cs">
+      <DependentUpon>PauseServiceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReadIDCard.xaml.cs">
+      <DependentUpon>ReadIDCard.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controls\KeyBorder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LoadingWait.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Themes\BasicDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AdminManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BlankPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CardStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ExitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FaceCheck.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MessagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MessageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PauseServiceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ReadIDCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Font\1900805.ttf" />
+    <Resource Include="Font\fontawesome-webfont.ttf" />
+    <Resource Include="Font\TTTGB-Medium.ttf" />
+    <Resource Include="Font\兰亭细黑.TTF" />
+    <Resource Include="Font\方正兰亭粗黑_GBK.TTF" />
+    <Resource Include="Font\方正汉真广标简体.TTF" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HSZH.BLL\HSZH.BLL.csproj">
+      <Project>{cfb935fa-3830-48c6-b171-1897ae121c00}</Project>
+      <Name>HSZH.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HSZH.Common\HSZH.Common.csproj">
+      <Project>{ef99fec5-58ab-4f4f-892a-49116883fd4e}</Project>
+      <Name>HSZH.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HSZH.Config\HSZH.Config.csproj">
+      <Project>{eb97df53-99fc-4aef-a346-3b34b9da06b7}</Project>
+      <Name>HSZH.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HSZH.Hardware\HSZH.Hardware.csproj">
+      <Project>{651d4f3b-e152-42b0-8f65-d64d1c2290f9}</Project>
+      <Name>HSZH.Hardware</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HSZH.Interface\HSZH.Interface.csproj">
+      <Project>{E0905ADC-8F74-4A2D-AC07-39673DBFF8D9}</Project>
+      <Name>HSZH.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HSZH.Models\HSZH.Models.csproj">
+      <Project>{e0db6215-0901-4efd-8cb2-e888b46a432d}</Project>
+      <Name>HSZH.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\iconzhywblue2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\iconCanel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\iconJTNext.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\iconConfirm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\idcard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\dsjng.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\iconcq.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\iconerror.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\iconhome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon\icontc.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

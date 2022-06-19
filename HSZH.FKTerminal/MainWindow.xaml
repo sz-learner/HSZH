@@ -1,0 +1,83 @@
+﻿<Window x:Class="HSZH.FKTerminal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HSZH.FKTerminal"
+        xmlns:ctrl="clr-namespace:HSZH.FKTerminal.Controls"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        mc:Ignorable="d"
+        Title="MainWindow" Width="1920" Height="1080" Style="{StaticResource NoResize_window}" WindowStartupLocation="CenterScreen" Background="Transparent">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding DoInit}" CommandParameter="{Binding ElementName=layout}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Viewbox>
+        <Grid x:Name="layout" Width="1920" Height="1080">
+            <Grid.Background>
+                <ImageBrush ImageSource="/HSZH.FKTerminal;component/Images/back.png" Stretch="Fill"></ImageBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="230"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" VerticalAlignment="Center">
+                    <Image Width="96" Height="96" Source="{StaticResource ImageSource_Logo}" />
+                    <Button Focusable="False" Height="96" Opacity="0" Command="{Binding DoInAdminManager}" CommandParameter="0"></Button>
+                </Grid>
+                <Grid Grid.Column="2" VerticalAlignment="Center">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
+                        <TextBlock Padding="0,15,0,0" VerticalAlignment="Center" Text="{Binding HomeCurrData}" FontFamily="微软雅黑" FontWeight="Bold" FontSize="20" Foreground="#FFF1F3F3">
+                            <TextBlock.Effect>
+                                <DropShadowEffect Color="#4151a9" Direction="0" ShadowDepth="3" Opacity="0.2" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <TextBlock Padding="0,0,0,5" HorizontalAlignment="Right" Text="{Binding HomeCurrTime}" FontFamily="微软雅黑" FontWeight="Bold" FontSize="35" Foreground="#FFF1F3F3">
+                            <TextBlock.Effect>
+                                <DropShadowEffect Color="#4151a9" Direction="0" ShadowDepth="3" Opacity="0.2" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+                    </StackPanel>
+                    <Button Focusable="False" Opacity="0" Command="{Binding DoInAdminManager}" CommandParameter="1"></Button>
+                </Grid>
+                <Grid Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock Focusable="False"  Grid.Column="1" Text="{Binding AppTitle}"  FontSize="45" FontWeight="Bold" Foreground="White" FontFamily="{StaticResource GlovalFontFamilyCNTitle}">
+                    </TextBlock>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" JournalOwnership="UsesParentJournal" Source="{Binding MainTraget}"></Frame>
+                <StackPanel Visibility="{Binding CountdownVisibility}" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,45,50,0">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource TextBlockCountdownStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="倒计时："></TextBlock>
+                        <TextBlock Style="{StaticResource TextBlockCountdownStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding CountdownValue}"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.Background>
+                    <SolidColorBrush Color="#2a3a6e" Opacity="0.5"></SolidColorBrush>
+                </Grid.Background>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="微软雅黑" Foreground="White" FontSize="12" FontWeight="Bold" Text="{Binding FooterMessageInfo1}"></TextBlock>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="微软雅黑" Foreground="White" FontSize="12" FontWeight="Bold" Text="{Binding FooterMessageInfo2}" ></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="微软雅黑" Foreground="White" FontSize="12" FontWeight="Bold"  Text="{Binding ServerPhoneNumber1}" Margin="0,0,20,0"></TextBlock>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="微软雅黑" Foreground="White" FontSize="12" FontWeight="Bold"  Text="{Binding ServerPhoneNumber2}"></TextBlock>
+                </StackPanel>
+            </Grid>
+            <ctrl:LoadingWait Grid.Row="0" Grid.RowSpan="3" Visibility="{Binding LoadingWaitVisibility}" LoadMsgInfo="{Binding LoadingWaitMessage}" ProForeground="#FF1769E0"></ctrl:LoadingWait>
+        </Grid>
+    </Viewbox>
+</Window>

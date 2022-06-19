@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="HSZH.Tools.Controls.HardwareTest.UCK7X0"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:HSZH.Tools.ViewModels.HardwareTest"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <vm:K7X0ViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <ComboBox ItemsSource="{Binding ItemList}" DisplayMemberPath="Text" SelectedItem="{Binding SelectDataItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Content="打开设备" Margin="10,0,0,0" Command="{Binding DoNext}" CommandParameter="K720_CommOpen" />
+            <Button Content="关闭设备" Margin="10,0,0,0" Command="{Binding DoNext}" CommandParameter="K720_CommClose" />
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top">
+                <ComboBox ItemsSource="{Binding DeviceMacList}" DisplayMemberPath="Text" SelectedItem="{Binding SelectdDeviceMacItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Button Content="查询设备" Margin="10,0,0,0" Command="{Binding DoNext}" CommandParameter="K720_Query" />
+                <Button Content="获取版本" Margin="10,0,0,0" Command="{Binding DoNext}" CommandParameter="K720_GetSysVersion" />
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top">
+                <Button Content="发卡(DC)" Margin="0,0,0,0" Command="{Binding DoK720_SendCmd}" CommandParameter="DC" />
+                <Button Content="收卡(CP)" Margin="10,0,0,0" Command="{Binding DoK720_SendCmd}" CommandParameter="CP" />
+                <Button Content="复位(RS)" Margin="10,0,0,0" Command="{Binding DoK720_SendCmd}" CommandParameter="RS" />
+                <Button Content="获取版本(GV)" Margin="10,0,0,0" Command="{Binding DoK720_SendCmd}" CommandParameter="GV" />
+                <Button Content="查询状态(RF)" Margin="10,0,0,0" Command="{Binding DoK720_SendCmd}" CommandParameter="RF" />
+                <Button Content="高级查询(AP)" Margin="10,0,0,0" Command="{Binding DoK720_SendCmd}" CommandParameter="AP" />
+            </StackPanel>
+        </Grid>
+        <TextBlock Grid.Row="2" Foreground="Red" FontSize="30" VerticalAlignment="Center" Text="{Binding StatuMsg}" />
+    </Grid>
+</UserControl>

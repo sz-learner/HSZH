@@ -1,0 +1,61 @@
+﻿<Page x:Class="HSZH.FKTerminal.Views.ExitPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HSZH.FKTerminal.Views"
+      mc:Ignorable="d"      
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:ctrl="clr-namespace:HSZH.FKTerminal.Controls"
+      xmlns:vm="clr-namespace:HSZH.FKTerminal.ViewModels"
+      d:DesignWidth="1920" d:DesignHeight="1080"
+      Title="ExitPage">
+
+    <Page.DataContext>
+        <vm:ExitPageViewModel />
+    </Page.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding DoInit}" CommandParameter="{Binding ElementName=txtInputValue}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="120"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Border Margin="20,0,20,0" CornerRadius="5">
+                <Border.Background>
+                    <SolidColorBrush Color="White"></SolidColorBrush>
+                </Border.Background>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" >
+                        <Grid.Background>
+                            <SolidColorBrush Color="#6499F7"></SolidColorBrush>
+                        </Grid.Background>
+                        <TextBlock  Text="输入管理员密码" Style="{StaticResource TopTitleMessageStyle}" Foreground="White" FontSize="40"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20,10,20,0">
+                        <StackPanel>
+                            <PasswordBox Margin="240,0,0,0" HorizontalAlignment="Left" VerticalContentAlignment="Center" x:Name="txtInputValue" FontSize="30" PasswordChar="*" Height="50" Width="600"></PasswordBox>
+                            <ctrl:KeyBorder Margin="120,30,0,0" ></ctrl:KeyBorder>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ctrl:IconButton HorizontalAlignment="Left" Margin="20,0,0,0" Command="{Binding DoExit}" Grid.Column="0" Style="{StaticResource IconButton-Canel}">取消</ctrl:IconButton>
+        </Grid>
+    </Grid>
+</Page>

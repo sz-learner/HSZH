@@ -1,0 +1,6 @@
+\Bin
+\packages
+\.vs
+*\bin
+*\obj
+*\appsettings.Development.json

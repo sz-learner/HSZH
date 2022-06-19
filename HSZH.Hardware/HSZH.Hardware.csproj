@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EmguCV.3.1.0.1\build\EmguCV.props" Condition="Exists('..\packages\EmguCV.3.1.0.1\build\EmguCV.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{651D4F3B-E152-42B0-8F65-D64D1C2290F9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HSZH.Hardware</RootNamespace>
+    <AssemblyName>HSZH.Hardware</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accord, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.3.8.0\lib\net45\Accord.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Video, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Video.3.8.0\lib\net45\Accord.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Video.DirectShow, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Video.DirectShow.3.8.0\lib\net45\Accord.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI, Version=3.1.0.2282, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmguCV.3.1.0.1\lib\net30\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI.GL, Version=3.1.0.2282, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmguCV.3.1.0.1\lib\net30\Emgu.CV.UI.GL.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.World, Version=3.1.0.2282, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmguCV.3.1.0.1\lib\net30\Emgu.CV.World.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.1.1.2225.0\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.GLControl.1.1.2225.0\lib\net20\OpenTK.GLControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZedGraph.5.1.5\lib\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FaceCheck\FaceCheckHelper.cs" />
+    <Compile Include="FaceCheck\FaceCheckInfo.cs" />
+    <Compile Include="FaceCheck\HongRuan\CommonUtil.cs" />
+    <Compile Include="FaceCheck\HongRuan\ErrorCodeUtil.cs" />
+    <Compile Include="FaceCheck\HongRuan\FaceCheckToHongRuan.cs" />
+    <Compile Include="FaceCheck\HongRuan\FaceEngine.cs" />
+    <Compile Include="FaceCheck\HongRuan\FaceUtil.cs" />
+    <Compile Include="FaceCheck\HongRuan\HongRuanFaceCheckDll.cs" />
+    <Compile Include="FaceCheck\HongRuan\ImageUtil.cs" />
+    <Compile Include="FaceCheck\HongRuan\MemoryUtil.cs" />
+    <Compile Include="FaceCheck\IFaceCheck.cs" />
+    <Compile Include="FaceCheck\SDKModel\ActiveFileInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\AgeInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_ActiveFileInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_AgeInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_CompareModel.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_DetectModel.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_Face3DAngle.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_FaceDataInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_FaceFeature.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_FaceLandmark.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_GenderInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_ImageData.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_ImagePixelFormat.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_LandMarkInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_LivenessInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_LivenessThreshold.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_MaskInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_MaskOrNot.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_MultiFaceInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_OrientCode.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_OrientPriority.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_RegisterOrNot.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_SingleFaceInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\ASF_VERSION.cs" />
+    <Compile Include="FaceCheck\SDKModel\DetectionMode.cs" />
+    <Compile Include="FaceCheck\SDKModel\Face3DAngle.cs" />
+    <Compile Include="FaceCheck\SDKModel\FaceDataInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\FaceEngineMask.cs" />
+    <Compile Include="FaceCheck\SDKModel\FaceFeature.cs" />
+    <Compile Include="FaceCheck\SDKModel\GenderInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\ImageInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\LandMarkInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\LivenessInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\MaskInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\MRECT.cs" />
+    <Compile Include="FaceCheck\SDKModel\MultiFaceInfo.cs" />
+    <Compile Include="FaceCheck\SDKModel\SDKVersion.cs" />
+    <Compile Include="FaceCheck\SDKModel\SingleFaceInfo.cs" />
+    <Compile Include="IDCard\IDCardDLLImport.cs" />
+    <Compile Include="IDCard\CVR_IDCard.cs" />
+    <Compile Include="IDCard\TEST_IDCard.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TTSY\TT_K7X0.cs" />
+    <Compile Include="VideoLibrary\AccordCameraImpl.cs" />
+    <Compile Include="VideoLibrary\EmgucvCameraImpl.cs" />
+    <Compile Include="VideoLibrary\ICameraHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HSZH.Common\HSZH.Common.csproj">
+      <Project>{ef99fec5-58ab-4f4f-892a-49116883fd4e}</Project>
+      <Name>HSZH.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HSZH.Interface\HSZH.Interface.csproj">
+      <Project>{e0905adc-8f74-4a2d-ac07-39673dbff8d9}</Project>
+      <Name>HSZH.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HSZH.Models\HSZH.Models.csproj">
+      <Project>{e0db6215-0901-4efd-8cb2-e888b46a432d}</Project>
+      <Name>HSZH.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Accord.3.8.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.0\build\Accord.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Accord.3.8.0\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.3.8.0\build\Accord.targets'))" />
+    <Error Condition="!Exists('..\packages\EmguCV.3.1.0.1\build\EmguCV.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EmguCV.3.1.0.1\build\EmguCV.props'))" />
+    <Error Condition="!Exists('..\packages\EmguCV.3.1.0.1\build\EmguCV.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EmguCV.3.1.0.1\build\EmguCV.targets'))" />
+  </Target>
+  <Import Project="..\packages\EmguCV.3.1.0.1\build\EmguCV.targets" Condition="Exists('..\packages\EmguCV.3.1.0.1\build\EmguCV.targets')" />
+</Project>

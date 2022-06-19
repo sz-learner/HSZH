@@ -1,0 +1,54 @@
+﻿<Page x:Class="HSZH.FKTerminal.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HSZH.FKTerminal.Views"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:vm="clr-namespace:HSZH.FKTerminal.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignWidth="1920" d:DesignHeight="1080" 
+      Title="MainPage">
+
+    <Page.DataContext>
+        <vm:MainPageViewModel />
+    </Page.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding DoInit}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-100,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="240"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Center" Grid.Row="0">
+            <TextBlock FontFamily="{DynamicResource GlovalFontFamilyCNTitle}" Foreground="White" FontSize="100" FontWeight="Bold" TextAlignment="Center" Text="欢迎使用自助服务终端">
+            </TextBlock>
+        </StackPanel>
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,50,0,0">
+            <WrapPanel.Resources>
+                <Style x:Key="ButtonStyle" TargetType="Button" BasedOn="{StaticResource IDCardIndexButtomStyle}">
+                    <Setter Property="Width" Value="400"></Setter>
+                    <Setter Property="Height" Value="300"></Setter>
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#01a0fb" Offset="0"/>
+                                <GradientStop Color="#13cffd" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </WrapPanel.Resources>
+            <Button Style="{StaticResource ButtonStyle}" Command="{Binding DoNext}" CommandParameter="1">
+                <Button.Content>
+                    <StackPanel>
+                        <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="70" Foreground="White" FontFamily="{DynamicResource GlovalFontFamilyCNTitle}">自助取卡</TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </WrapPanel>
+    </Grid>
+</Page>

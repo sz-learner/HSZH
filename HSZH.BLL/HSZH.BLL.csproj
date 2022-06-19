@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CFB935FA-3830-48C6-B171-1897AE121C00}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HSZH.BLL</RootNamespace>
+    <AssemblyName>HSZH.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HardwareHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HSZH.Common\HSZH.Common.csproj">
+      <Project>{ef99fec5-58ab-4f4f-892a-49116883fd4e}</Project>
+      <Name>HSZH.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HSZH.Config\HSZH.Config.csproj">
+      <Project>{eb97df53-99fc-4aef-a346-3b34b9da06b7}</Project>
+      <Name>HSZH.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HSZH.Hardware\HSZH.Hardware.csproj">
+      <Project>{651d4f3b-e152-42b0-8f65-d64d1c2290f9}</Project>
+      <Name>HSZH.Hardware</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HSZH.Interface\HSZH.Interface.csproj">
+      <Project>{e0905adc-8f74-4a2d-ac07-39673dbff8d9}</Project>
+      <Name>HSZH.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HSZH.Models\HSZH.Models.csproj">
+      <Project>{e0db6215-0901-4efd-8cb2-e888b46a432d}</Project>
+      <Name>HSZH.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

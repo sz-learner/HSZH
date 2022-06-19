@@ -1,0 +1,570 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ctrl="clr-namespace:HSZH.FKTerminal.Controls">
+
+    <Color x:Key="primary">#409EFF</Color>
+    <Color x:Key="success">#67C23A</Color>
+    <Color x:Key="danger">#F56C6C</Color>
+    <Color x:Key="info">#909399</Color>
+    <Color x:Key="warning">#E6A23C</Color>
+    <Color x:Key="placeholder">#C0C4CC</Color>
+
+    <SolidColorBrush x:Key="color-success" Color="#67C23A"></SolidColorBrush>
+    <SolidColorBrush x:Key="color-warning" Color="#E6A23C"></SolidColorBrush>
+    <SolidColorBrush x:Key="color-danger" Color="#F56C6C"></SolidColorBrush>
+    <SolidColorBrush x:Key="color-info" Color="#909399"></SolidColorBrush>
+    <SolidColorBrush x:Key="color-primary" Color="#409EFF"></SolidColorBrush>
+    <SolidColorBrush x:Key="color-text-primary" Color="#303133"></SolidColorBrush>
+    <SolidColorBrush x:Key="color-text-regular" Color="#606266"></SolidColorBrush>
+    <SolidColorBrush x:Key="color-text-secondary" Color="#909399"></SolidColorBrush>
+    <SolidColorBrush x:Key="color-text-placeholder" Color="#C0C4CC"></SolidColorBrush>
+    <SolidColorBrush x:Key="border-color-base" Color="#DCDFE6"></SolidColorBrush>
+    <SolidColorBrush x:Key="border-color-light" Color="#E4E7ED"></SolidColorBrush>
+    <SolidColorBrush x:Key="border-color-lighter" Color="#EBEEF5"></SolidColorBrush>
+    <SolidColorBrush x:Key="border-color-extra-light" Color="#F2F6FC"></SolidColorBrush>
+    <SolidColorBrush x:Key="background-color-base" Color="#F5F7FA"></SolidColorBrush>
+    <SolidColorBrush x:Key="background-color-black" Color="#000000"></SolidColorBrush>
+    <SolidColorBrush x:Key="background-color-white" Color="#FFFFFF"></SolidColorBrush>
+    
+    <ImageSource x:Key="ImageSource_Logo">/HSZH.FKTerminal;component/Images/logo.png</ImageSource>
+    <ImageSource x:Key="ImageSource_IDCard">/HSZH.FKTerminal;component/Images/idcard.png</ImageSource>
+
+    <!--窗体样式-->
+    <Style x:Key="NoResize_window" TargetType="{x:Type Window}">
+        <Setter Property="AllowsTransparency" Value="False"/>
+        <Setter Property="ResizeMode" Value="NoResize"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="WindowState" Value="Normal" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Grid Margin="0">
+                        <Rectangle Fill="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"    
+                            RadiusX="3" RadiusY="3">
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="5" ShadowDepth="0" Color="#FFB0B0B0"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Border Background="{TemplateBinding Background}"    
+                            BorderBrush="{TemplateBinding BorderBrush}"    
+                            BorderThickness="{TemplateBinding BorderThickness}"    
+                            Padding="{TemplateBinding Margin}"    
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"  
+                            CornerRadius="5">
+                            <ContentPresenter />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DialogWindowStyle" TargetType="Window">
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="Background" Value="#7FFFFFFF"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="ShowInTaskbar" Value="False"/>
+        <Setter Property="Topmost" Value="True"/>
+        <Setter Property="WindowState" Value="Maximized"/>
+        <Setter Property="ShowInTaskbar" Value="False"/>
+    </Style>
+    
+    <!--全局字体样式-->
+    <FontFamily x:Key="GlovalFontFamilyCNTitle">pack://application:,,,/HSZH.FKTerminal;component/Font/#腾讯体</FontFamily>
+    <FontFamily x:Key="GlovalFontFamily">微软雅黑</FontFamily>
+    <Style TargetType="{x:Type TextElement }">
+        <Setter Property="FontFamily" Value="{StaticResource GlovalFontFamily}"/>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBlock }">
+        <Setter Property="FontFamily" Value="{StaticResource GlovalFontFamily}"/>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
+    <!--全局字体样式.END-->
+
+    <Style x:Key="TopTitleMessageStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{StaticResource GlovalFontFamily}"></Setter>
+        <Setter Property="FontSize" Value="40"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+    </Style>
+    
+    <!--字体图标样式-->
+    <Style x:Key="fontawesomeIcon" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="pack://application:,,,/HSZH.FKTerminal;component/Font/#FontAwesome"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style x:Key="TextBlockCountdownStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="24"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
+    
+    <Style x:Key="ButtonFocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border>
+                        <Rectangle SnapsToDevicePixels="true" Stroke="Black" StrokeDashArray="1 2" StrokeThickness="1" Margin="4"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="glovalButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="0,0,0,0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Margin" Value="5"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Timeline1">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grow" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Timeline2">
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="grow" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#00FFFFFF"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grow" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Border Background="#4C000000" BorderBrush="#FFFFFFFF" BorderThickness="0" CornerRadius="5">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#FFDEE1E8" Opacity="0.2" ShadowDepth="3"/>
+                        </Border.Effect>
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="4,4,4,4">
+                            <Grid>
+                                <Border Opacity="0" Margin="0,0,0,0" x:Name="grow" CornerRadius="4,4,4,4" Grid.RowSpan="2" Visibility="Collapsed">
+                                    <Border.Background>
+                                        <RadialGradientBrush>
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="1.995" ScaleY="3.322"/>
+                                                    <SkewTransform AngleX="0" AngleY="0"/>
+                                                    <RotateTransform Angle="0"/>
+                                                    <TranslateTransform X="-0.453" Y="0.1"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#FFADB9B7" Offset="0.249"/>
+                                            <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                        </RadialGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <Border x:Name="shine" CornerRadius="4,4,0,0" Visibility="Collapsed">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,2.167" StartPoint="0.5,-3.167">
+                                            <GradientStop Color="#7DFFFFFF" Offset="0"/>
+                                            <GradientStop Color="#7DFFFFFF" Offset="1"/>
+                                            <GradientStop Color="#7DFFFFFF" Offset="0.539"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <ContentPresenter HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center">
+                                </ContentPresenter>
+                            </Grid>
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Visibility" TargetName="grow" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="shine" Value="Visible"/>
+                            <Setter Property="Opacity" TargetName="shine" Value="0.1"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true"/>
+                        <Trigger Property="IsDefaulted" Value="true"/>
+                        <Trigger Property="IsPressed" Value="true"/>
+                        <Trigger Property="ToggleButton.IsChecked" Value="true"/>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="#d8d8d8"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Visibility" TargetName="shine" Value="Visible"/>
+                            <Setter Property="Opacity" TargetName="shine" Value="0.4"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="Timeline1_BeginStoryboard" Storyboard="{StaticResource Timeline1}"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="Button-Primary" TargetType="{x:Type Button}" BasedOn="{StaticResource glovalButtonStyle}">
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="Background" Value="{DynamicResource color-primary}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="MinWidth" Value="120"></Setter>
+        <Setter Property="MinHeight" Value="40"></Setter>
+    </Style>
+    <Style x:Key="Button-Primary-Item" TargetType="{x:Type Button}" BasedOn="{StaticResource glovalButtonStyle}">
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="Background" Value="{DynamicResource color-primary}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="MinWidth" Value="120"></Setter>
+        <Setter Property="MinHeight" Value="40"></Setter>
+    </Style>
+    <Style x:Key="Button-Primary-InputBox" TargetType="{x:Type Button}" BasedOn="{StaticResource glovalButtonStyle}">
+        <Setter Property="FontSize" Value="24"></Setter>
+        <Setter Property="Background" Value="{DynamicResource color-primary}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Width" Value="120"></Setter>
+        <Setter Property="Height" Value="100"></Setter>
+        <Setter Property="Margin" Value="2"></Setter>
+    </Style>
+
+    <Style x:Key="Button-Success" TargetType="{x:Type Button}" BasedOn="{StaticResource glovalButtonStyle}">
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="Background" Value="{DynamicResource color-success}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="MinWidth" Value="120"></Setter>
+        <Setter Property="MinHeight" Value="40"></Setter>
+    </Style>
+    <Style x:Key="Button-Warning" TargetType="{x:Type Button}" BasedOn="{StaticResource glovalButtonStyle}">
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="Background" Value="{DynamicResource color-warning}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="MinWidth" Value="120"></Setter>
+        <Setter Property="MinHeight" Value="40"></Setter>
+    </Style>
+    <Style x:Key="Button-Danger" TargetType="{x:Type Button}" BasedOn="{StaticResource glovalButtonStyle}">
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="Background" Value="{DynamicResource color-danger}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="MinWidth" Value="120"></Setter>
+        <Setter Property="MinHeight" Value="40"></Setter>
+    </Style>
+    <Style x:Key="Button-Info" TargetType="{x:Type Button}" BasedOn="{StaticResource glovalButtonStyle}">
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="Background" Value="{DynamicResource color-info}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="MinWidth" Value="120"></Setter>
+        <Setter Property="MinHeight" Value="40"></Setter>
+    </Style>
+
+    <Style x:Key="Button-Primary-KeyBorder" TargetType="{x:Type Button}" BasedOn="{StaticResource glovalButtonStyle}">
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="Background" Value="{DynamicResource color-primary}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Margin" Value="3,2,1,1"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="Button-Primary-Input" TargetType="{x:Type Button}" BasedOn="{StaticResource glovalButtonStyle}">
+        <Setter Property="FontSize" Value="24"></Setter>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Background" Value="{DynamicResource color-primary}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+
+    <Style x:Key="Button-Success-KeyBorder" TargetType="{x:Type Button}" BasedOn="{StaticResource glovalButtonStyle}">
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="Background" Value="{DynamicResource color-success}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Margin" Value="3,2,1,1"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="Button-Danger-KeyBorder" TargetType="{x:Type Button}" BasedOn="{StaticResource glovalButtonStyle}">
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="Background" Value="{DynamicResource color-danger}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Margin" Value="3,2,1,1"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    
+    <Style x:Key="BaseIconButton" TargetType="{x:Type ctrl:IconButton}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="0,0,0,0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Margin" Value="5"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="MinWidth" Value="120"></Setter>
+        <Setter Property="MinHeight" Value="40"></Setter>
+        <Setter Property="IconImageSize" Value="32"/>
+        <Setter Property="IconImage" Value="/Freedom.Controls;component/Images/Icon/iconzq.png"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ctrl:IconButton}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Timeline1">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grow" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Timeline2">
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="grow" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#00FFFFFF"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grow" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Border Background="#4C000000" BorderBrush="#FFFFFFFF" BorderThickness="0" CornerRadius="5">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#FFDEE1E8" Opacity="0.2" ShadowDepth="3"/>
+                        </Border.Effect>
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="4,4,4,4">
+                            <Grid>
+                                <Border Opacity="0" Margin="0,0,0,0" x:Name="grow" CornerRadius="4,4,4,4" Grid.RowSpan="2" Visibility="Collapsed">
+                                    <Border.Background>
+                                        <RadialGradientBrush>
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="1.995" ScaleY="3.322"/>
+                                                    <SkewTransform AngleX="0" AngleY="0"/>
+                                                    <RotateTransform Angle="0"/>
+                                                    <TranslateTransform X="-0.453" Y="0.1"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#FFADB9B7" Offset="0.249"/>
+                                            <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                        </RadialGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <Border x:Name="shine" CornerRadius="4,4,0,0" Visibility="Collapsed">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,2.167" StartPoint="0.5,-3.167">
+                                            <GradientStop Color="#7DFFFFFF" Offset="0"/>
+                                            <GradientStop Color="#7DFFFFFF" Offset="1"/>
+                                            <GradientStop Color="#7DFFFFFF" Offset="0.539"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <Image x:Name="ButtonImage" VerticalAlignment="Center" Source="{Binding IconImage, RelativeSource={RelativeSource TemplatedParent}}"  Width="{Binding IconImageSize, RelativeSource={RelativeSource TemplatedParent}}"></Image>
+                                    <ContentPresenter HorizontalAlignment="Center" Margin="5,0,0,0" VerticalAlignment="Center">
+                                    </ContentPresenter>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Visibility" TargetName="grow" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="shine" Value="Visible"/>
+                            <Setter Property="Opacity" TargetName="shine" Value="0.1"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true"/>
+                        <Trigger Property="IsDefaulted" Value="true"/>
+                        <Trigger Property="IsPressed" Value="true"/>
+                        <Trigger Property="ToggleButton.IsChecked" Value="true"/>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="#d8d8d8"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Visibility" TargetName="shine" Value="Visible"/>
+                            <Setter Property="Opacity" TargetName="shine" Value="0.4"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="Timeline1_BeginStoryboard" Storyboard="{StaticResource Timeline1}"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="IconButton-Primary" TargetType="{x:Type ctrl:IconButton}" BasedOn="{StaticResource BaseIconButton}">
+        <Setter Property="Background" Value="{DynamicResource color-primary}"></Setter>
+    </Style>
+    <Style x:Key="IconButton-Success" TargetType="{x:Type ctrl:IconButton}" BasedOn="{StaticResource BaseIconButton}">
+        <Setter Property="Background" Value="{DynamicResource color-success}"></Setter>
+    </Style>
+    <Style x:Key="IconButton-Warning" TargetType="{x:Type ctrl:IconButton}" BasedOn="{StaticResource BaseIconButton}">
+        <Setter Property="Background" Value="{DynamicResource color-warning}"></Setter>
+    </Style>
+    <Style x:Key="IconButton-Danger" TargetType="{x:Type ctrl:IconButton}" BasedOn="{StaticResource BaseIconButton}">
+        <Setter Property="Background" Value="{DynamicResource color-danger}"></Setter>
+    </Style>
+    <Style x:Key="IconButton-Info" TargetType="{x:Type ctrl:IconButton}" BasedOn="{StaticResource BaseIconButton}">
+        <Setter Property="Background" Value="{DynamicResource color-info}"></Setter>
+    </Style>
+    
+    <Style x:Key="IDCardIndexButtomStyle" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="0,0,0,0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Margin" Value="5"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Timeline1">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grow" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="Timeline2">
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="grow" Storyboard.TargetProperty="(Panel.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#00FFFFFF"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grow" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Border Background="#4C000000" BorderBrush="#FFFFFFFF" BorderThickness="0" CornerRadius="5">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#FFDEE1E8" Opacity="0.2" ShadowDepth="3"/>
+                        </Border.Effect>
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="4,4,4,4">
+                            <Grid>
+                                <Border Opacity="0" Margin="0,0,0,0" x:Name="grow" CornerRadius="4,4,4,4" Grid.RowSpan="2" Visibility="Collapsed">
+                                    <Border.Background>
+                                        <RadialGradientBrush>
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform ScaleX="1.995" ScaleY="3.322"/>
+                                                    <SkewTransform AngleX="0" AngleY="0"/>
+                                                    <RotateTransform Angle="0"/>
+                                                    <TranslateTransform X="-0.453" Y="0.1"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#FFADB9B7" Offset="0.249"/>
+                                            <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                        </RadialGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <Border x:Name="shine" CornerRadius="4,4,0,0" Visibility="Collapsed">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,2.167" StartPoint="0.5,-3.167">
+                                            <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                                            <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                            <GradientStop Color="#7DFFFFFF" Offset="0.335"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <ContentPresenter HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Visibility" TargetName="grow" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="shine" Value="Visible"/>
+                            <Setter Property="Opacity" TargetName="shine" Value="0.1"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true"/>
+                        <Trigger Property="IsDefaulted" Value="true"/>
+                        <Trigger Property="IsPressed" Value="true"/>
+                        <Trigger Property="ToggleButton.IsChecked" Value="true"/>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="#d8d8d8"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="Timeline1_BeginStoryboard" Storyboard="{StaticResource Timeline1}"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="IconButton-Primary-ManagerHome" TargetType="{x:Type ctrl:IconButton}" BasedOn="{StaticResource BaseIconButton}">
+        <Setter Property="Background" Value="{DynamicResource color-primary}"></Setter>
+        <Setter Property="Width" Value="300"/>
+        <Setter Property="Height" Value="120"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="IconImageSize" Value="32"/>
+    </Style>
+    
+    <Style TargetType="{x:Type ctrl:ImageButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ctrl:ImageButton}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="IconButton-Canel" TargetType="{x:Type ctrl:IconButton}" BasedOn="{StaticResource BaseIconButton}">
+        <Setter Property="Background" Value="{DynamicResource color-danger}"></Setter>
+        <Setter Property="IconImage" Value="/HSZH.FKTerminal;component/Images/Icon/iconCanel.png"></Setter>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="72"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="IconButton-Next" TargetType="{x:Type ctrl:IconButton}" BasedOn="{StaticResource BaseIconButton}">
+        <Setter Property="Background" Value="{StaticResource color-primary}"></Setter>
+        <Setter Property="IconImage" Value="/HSZH.FKTerminal;component/Images/Icon/iconJTNext.png"></Setter>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="72"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="IconButton-Confirm" TargetType="{x:Type ctrl:IconButton}" BasedOn="{StaticResource BaseIconButton}">
+        <Setter Property="Background" Value="{StaticResource color-primary}"></Setter>
+        <Setter Property="IconImage" Value="/HSZH.FKTerminal;component/Images/Icon/iconConfirm.png"></Setter>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="72"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    
+</ResourceDictionary>

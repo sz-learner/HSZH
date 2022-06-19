@@ -1,0 +1,77 @@
+﻿<Page x:Class="HSZH.FKTerminal.Views.ReadIDCard"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:vm="clr-namespace:HSZH.FKTerminal.ViewModels"
+      xmlns:ctrl="clr-namespace:HSZH.FKTerminal.Controls"
+      mc:Ignorable="d"
+      Title="ReadIDCard" d:DesignWidth="1920" d:DesignHeight="1080">
+
+    <Page.DataContext>
+        <vm:ReadIDCardViewModel />
+    </Page.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding DoInit}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="120"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Border Margin="20,0,20,0" CornerRadius="5">
+                <Border.Background>
+                    <SolidColorBrush Color="White"></SolidColorBrush>
+                </Border.Background>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" >
+                        <Grid.Background>
+                            <SolidColorBrush Color="#6499F7"></SolidColorBrush>
+                        </Grid.Background>
+                        <TextBlock  Text="身份证信息采集" Style="{StaticResource TopTitleMessageStyle}" Foreground="White" FontSize="40"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20,10,20,0">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Margin="0,50,0,0">
+                                <TextBlock FontFamily="微软雅黑" Foreground="{DynamicResource color-text-primary}" FontSize="30" FontWeight="Bold" TextAlignment="Center">操作指引</TextBlock>
+                                <TextBlock Margin="0,40,0,0" FontFamily="微软雅黑" Foreground="{DynamicResource color-text-primary}" FontSize="20" FontWeight="Regular" TextAlignment="Center">第一步：找到身份证读卡器的位置</TextBlock>
+                                <TextBlock Margin="0,20,0,0" FontFamily="微软雅黑" Foreground="{DynamicResource color-text-primary}" FontSize="20" FontWeight="Regular" TextAlignment="Center">第二步：将身份证放置到读卡区内</TextBlock>
+                            </StackPanel>
+                            <StackPanel Margin="30">
+                                <Rectangle Height="240" Width="1" Margin="0,5,0,5">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Color="#FFD1CDCD" ShadowDepth="3"/>
+                                    </Rectangle.Effect>
+                                    <Rectangle.Stroke>
+                                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                            <GradientStop Color="#FF919293" Offset="0.584"/>
+                                            <GradientStop Color="#FF3D3E3E"/>
+                                            <GradientStop Color="#FF646464" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Rectangle.Stroke>
+                                </Rectangle>
+                            </StackPanel>
+                            <Image VerticalAlignment="Center" Source="{StaticResource ImageSource_IDCard}" Width="298" Height="239" Margin="0,20,0,0"></Image>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ctrl:IconButton HorizontalAlignment="Left" Margin="20,0,0,0" Command="{Binding DoExit}" Style="{StaticResource IconButton-Canel}">取消</ctrl:IconButton>
+        </Grid>
+    </Grid>
+</Page>

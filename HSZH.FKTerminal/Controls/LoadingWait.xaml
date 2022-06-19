@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="HSZH.FKTerminal.Controls.LoadingWait"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HSZH.FKTerminal.Controls"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" Name="loadingWait" Background="Transparent"
+             d:DesignHeight="1024" d:DesignWidth="1080">
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="#5b6376" Opacity="0.3"></SolidColorBrush>
+        </Grid.Background>
+        <Border Width="800" Height="500"  Margin="20,0,20,0" BorderThickness="1" BorderBrush="#6499F7">
+            <Border.Background>
+                <SolidColorBrush Color="White"></SolidColorBrush>
+            </Border.Background>
+            <Border.Effect>
+                <DropShadowEffect Color="#FFC9C9C9" Direction="315" ShadowDepth="2"></DropShadowEffect>
+            </Border.Effect>
+            <Border>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Background="#6499F7">
+                        <TextBlock VerticalAlignment="Center" Margin="20,8,0,0" FontSize="30" Foreground="White" FontFamily="{DynamicResource GlovalFontFamilyCNTitle}">系统消息</TextBlock>
+                    </Border>
+                    <Grid VerticalAlignment="Center" Grid.Row="1">
+                        <StackPanel>
+                            <mui:ModernProgressRing IsActive="{Binding ElementName=loadingWait,Path=BlProActive}" Width="120" Margin="0,0,0,0" Height="120"
+                                                Foreground="{Binding ElementName=loadingWait,Path=ProForeground}"/>
+                            <TextBlock Margin="20,20,20,0"  TextWrapping="Wrap" Text="{Binding ElementName=loadingWait, Path=LoadMsgInfo}"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontWeight="Bold" FontFamily="Ebrima" Foreground="{Binding ElementName=loadingWait,Path=ProForeground}">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect Color="#FFCBCFD6" ShadowDepth="2" BlurRadius="2" Opacity="0.4"/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+            </Border>
+        </Border>
+    </Grid>
+</UserControl>
