@@ -109,24 +109,17 @@ namespace HSZH.Tools.ViewModels.HardwareTest
 
             try
             {
-                string p_Cmd = obj?.ToString();
-                byte macAddr = Convert.ToByte(SelectdDeviceMacItem.Code);
-                int len = 1024;
+                var pCmd = obj?.ToString();
+                var macAddr = Convert.ToByte(SelectdDeviceMacItem.Code);
 
-                LogHelper.Instance.WriteInfo($"K720_SendCmd {p_Cmd}, Mac：{macAddr}");
-                IntPtr RecordInfo = MemoryUtil.Malloc(len);
-                int ret = TT_K7X0.K720_SendCmd(ComHandle, macAddr, p_Cmd, p_Cmd.Length, RecordInfo);
+                LogHelper.Instance.WriteInfo($"K720_SendCmd {pCmd}, Mac：{macAddr}");
+                IntPtr pRecordInfo = MemoryUtil.Malloc(1024);
+                int ret = TT_K7X0.K720_SendCmd(ComHandle, macAddr, pCmd, pCmd.Length, pRecordInfo);
                 LogHelper.Instance.WriteInfo($"K720_SendCmd Ret {ret}");
-                StatuMsg = $"K720_SendCmd {p_Cmd}，Mac：{macAddr}，Ret：{ret}";
+                StatuMsg = $"K720_SendCmd {pCmd}，Mac：{macAddr}，Ret：{ret}";
 
-                //LogHelper.Instance.WriteInfo($"K720_SendCmd Response Data：");
-                byte[] dataBytes = new byte[len];
-                Marshal.Copy(RecordInfo, dataBytes, 0, len);
-                //LogHelper.Instance.WriteInfo(ByteArrayConvert.byteArrayToHexString(dataBytes));
-                MemoryUtil.FreeArray(RecordInfo);
-
-                LogHelper.Instance.WriteInfo(Encoding.UTF8.GetString(dataBytes).TrimEnd('\0'));
-
+                var sRecordInfo = Marshal.PtrToStringAnsi(pRecordInfo);
+                MemoryUtil.FreeArray(pRecordInfo);
             }
             catch (Exception ex)
             {
