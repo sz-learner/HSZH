@@ -127,6 +127,7 @@
     <Compile Include="IDCard\TEST_IDCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TTSY\TT_K7X0.cs" />
+    <Compile Include="TTSY\TT_K7X0Helper.cs" />
     <Compile Include="VideoLibrary\AccordCameraImpl.cs" />
     <Compile Include="VideoLibrary\EmgucvCameraImpl.cs" />
     <Compile Include="VideoLibrary\ICameraHelper.cs" />

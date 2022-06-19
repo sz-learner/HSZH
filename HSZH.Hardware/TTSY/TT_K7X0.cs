@@ -45,32 +45,32 @@ namespace HSZH.Hardware.TTSY
 
         /////////////////RF610串口操作/////////////////////////////////////
         [DllImport(dllpath_K7x0, EntryPoint = "K720_CommOpen", CharSet = CharSet.Ansi, SetLastError = false)]
-        public static extern int K720_CommOpen(string port);
+        public static extern IntPtr K720_CommOpen(string port);
 
         [DllImport(dllpath_K7x0, EntryPoint = "K720_CommOpenWithBaud", CharSet = CharSet.Ansi, SetLastError = false)]
-        public static extern int K720_CommOpenWithBaud(string port, int _data);
+        public static extern IntPtr K720_CommOpenWithBaud(string port, int _data);
 
         [DllImport(dllpath_K7x0, EntryPoint = "K720_CommClose", CharSet = CharSet.Ansi, SetLastError = false)]
-        public static extern int K720_CommClose(int ComHandle);
+        public static extern int K720_CommClose(IntPtr ComHandle);
 
         [DllImport(dllpath_K7x0, EntryPoint = "K720_GetSysVersion", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int K720_GetSysVersion(int ComHandle, byte MacAddr, ref string strVersion);
+        public static extern int K720_GetSysVersion(IntPtr ComHandle, byte MacAddr, ref string strVersion);
 
         /**********************************D1801操作函数***************************************************/
         [DllImport(dllpath_K7x0, EntryPoint = "K720_GetVersion", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = false)]
-        public static extern int K720_GetVersion(int ComHandle, byte MacAddr, byte[] Version, IntPtr RecordInfo);
+        public static extern int K720_GetVersion(IntPtr ComHandle, byte MacAddr, byte[] Version, IntPtr RecordInfo);
 
         [DllImport(dllpath_K7x0, EntryPoint = "K720_SendCmd", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = false)]
-        public static extern int K720_SendCmd(int ComHandle, byte MacAddr, string p_Cmd, int CmdLen, IntPtr RecordInfo);
+        public static extern int K720_SendCmd(IntPtr ComHandle, byte MacAddr, string p_Cmd, int CmdLen, IntPtr RecordInfo);
 
         [DllImport(dllpath_K7x0, EntryPoint = "K720_Query", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = false)]
-        public static extern int K720_Query(int ComHandle, byte MacAddr, byte[] StateInfo, IntPtr RecordInfo);
+        public static extern int K720_Query(IntPtr ComHandle, byte MacAddr, byte[] StateInfo, IntPtr RecordInfo);
 
         //[DllImport(dllpath_K7x0, EntryPoint = "K720_SensorQuery", CallingConvention = CallingConvention.Cdecl)]
         //public static extern int K720_SensorQuery(IntPtr ComHandle, BYTE MacAddr, BYTE StateInfo[4], char* RecordInfo);
 
-        //[DllImport(dllpath_K7x0, EntryPoint = "K720_GetCountSum", CallingConvention = CallingConvention.Cdecl)]
-        //public static extern int K720_GetCountSum(IntPtr ComHandle, BYTE MacAddr, BYTE StateInfo[11], char* RecordInfo);
+        [DllImport(dllpath_K7x0, EntryPoint = "K720_GetCountSum", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi, SetLastError = false)]
+        public static extern int K720_GetCountSum(IntPtr ComHandle, byte MacAddr, byte[] StateInfo, IntPtr RecordInfo);
 
         //[DllImport(dllpath_K7x0, EntryPoint = "K720_ClearSendCount", CallingConvention = CallingConvention.Cdecl)]
         //public static extern int K720_ClearSendCount(IntPtr ComHandle, BYTE MacAddr, char* RecordInfo);

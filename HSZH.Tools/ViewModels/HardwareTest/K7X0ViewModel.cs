@@ -16,7 +16,8 @@ namespace HSZH.Tools.ViewModels.HardwareTest
 {
     public class K7X0ViewModel : ObservableObject
     {
-        private int ComHandle = -1;
+        private TT_K7X0_SendCmdParamModel CmdParamModel;
+        private IntPtr ComHandle = IntPtr.Zero;
         public DataItemModel SelectDataItem { get; set; }
         public DataItemModel SelectdDeviceMacItem { get; set; }
 
@@ -74,7 +75,8 @@ namespace HSZH.Tools.ViewModels.HardwareTest
             }
             SelectdDeviceMacItem = DeviceMacList.Last();
 
-            LogHelper.Instance.WriteInfo($"demo");
+            CmdParamModel = new TT_K7X0_SendCmdParamModel();
+            CmdParamModel.MacAddr = Convert.ToByte(SelectdDeviceMacItem.Code);
         }
 
         public override void DoNextFunction(object obj)
@@ -106,38 +108,53 @@ namespace HSZH.Tools.ViewModels.HardwareTest
 
         private void DoK720_SendCmdFunction(object obj)
         {
-
             try
             {
+                var bRet = false;
                 var pCmd = obj?.ToString();
-                var macAddr = Convert.ToByte(SelectdDeviceMacItem.Code);
-
-                LogHelper.Instance.WriteInfo($"K720_SendCmd {pCmd}, Mac：{macAddr}");
-                IntPtr pRecordInfo = MemoryUtil.Malloc(1024);
-                int ret = TT_K7X0.K720_SendCmd(ComHandle, macAddr, pCmd, pCmd.Length, pRecordInfo);
-                LogHelper.Instance.WriteInfo($"K720_SendCmd Ret {ret}");
-                StatuMsg = $"K720_SendCmd {pCmd}，Mac：{macAddr}，Ret：{ret}";
-
-                var sRecordInfo = Marshal.PtrToStringAnsi(pRecordInfo);
-                MemoryUtil.FreeArray(pRecordInfo);
+                switch (obj?.ToString())
+                {
+                    case "DC": bRet = TT_K7X0Helper.SendCmd_DC(CmdParamModel); break;
+                    case "CP": bRet = TT_K7X0Helper.SendCmd_CP(CmdParamModel); break;
+                    case "RS": bRet = TT_K7X0Helper.SendCmd_RS(CmdParamModel); break;
+                    case "BE": bRet = TT_K7X0Helper.SendCmd_BE(CmdParamModel); break;
+                    case "BD": bRet = TT_K7X0Helper.SendCmd_BD(CmdParamModel); break;
+                    case "DB": bRet = TT_K7X0Helper.SendCmd_DB(CmdParamModel); break;
+                    case "FC0": bRet = TT_K7X0Helper.SendCmd_FC0(CmdParamModel); break;
+                    case "FC4": bRet = TT_K7X0Helper.SendCmd_FC4(CmdParamModel); break;
+                    case "FC6": bRet = TT_K7X0Helper.SendCmd_FC6(CmdParamModel); break;
+                    case "FC7": bRet = TT_K7X0Helper.SendCmd_FC7(CmdParamModel); break;
+                    case "FC8": bRet = TT_K7X0Helper.SendCmd_FC8(CmdParamModel); break;
+                    case "LPX": bRet = TT_K7X0Helper.SendCmd_LPX(CmdParamModel); break;
+                }
+                StatuMsg = $"发送命令[{pCmd}]" + (bRet ? "成功" : "失败");
+                LogHelper.Instance.WriteInfo(StatuMsg);
             }
             catch (Exception ex)
             {
                 StatuMsg = $"操作异常：{ex.Message}";
+                LogHelper.Instance.WriteError(ex);
             }
         }
 
         private void K720_CommOpen()
         {
-            string com = SelectDataItem.Code;
-            ComHandle = TT_K7X0.K720_CommOpen(com);
-            StatuMsg = $"K720_CommOpen，Param：{com}，Ret：{ComHandle}";
+            string comName = SelectDataItem.Code;
+            if (TT_K7X0Helper.CommOpen(comName, out IntPtr comHandle))
+            {
+                StatuMsg = $"打开{comName}成功";
+                LogHelper.Instance.WriteInfo(StatuMsg);
+                CmdParamModel.ComHandle = comHandle;
+                return;
+            }
+            StatuMsg = $"打开{comName}失败";
+            LogHelper.Instance.WriteInfo(StatuMsg);
         }
 
         private void K720_CommClose()
         {
-            int ret = TT_K7X0.K720_CommClose(ComHandle);
-            StatuMsg = $"K720_CommClose，Ret：{ret}";
+            bool bRet = TT_K7X0Helper.CommClose(CmdParamModel.ComHandle);
+            StatuMsg = $"关闭COM口" + (bRet ? "成功" : "失败");
         }
 
         private void K720_Query()
